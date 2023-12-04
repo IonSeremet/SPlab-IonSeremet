@@ -1,6 +1,6 @@
 package com.example.designpatternslab;
 
-class Paragraph {
+class Paragraph implements BookComponent{
     private String text;
 
     public Paragraph(String text) {
@@ -9,5 +9,9 @@ class Paragraph {
 
     public String getText() {
         return text;
+    }
+    @Override
+    public void print() {
+        System.out.println("Paragraph: " + text);
     }
 }

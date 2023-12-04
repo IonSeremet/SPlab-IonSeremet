@@ -1,6 +1,6 @@
 package com.example.designpatternslab;
 
-class Image {
+class Image implements BookComponent {
     private String imageUrl;
 
     public Image(String imageUrl) {
@@ -9,5 +9,10 @@ class Image {
 
     public String getImageUrl() {
         return imageUrl;
+    }
+
+    @Override
+    public void print() {
+        System.out.println("Image with name: " + imageUrl);
     }
 }

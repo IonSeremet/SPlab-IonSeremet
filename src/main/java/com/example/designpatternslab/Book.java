@@ -2,28 +2,45 @@ package com.example.designpatternslab;
 import java.util.ArrayList;
 import java.util.List;
 
-class Book {
+class Book implements BookComponent {
     private String title;
     private List<Author> authors;
-    private List<Chapter> chapters;
+    private List<BookComponent> content;
 
     public Book(String title) {
         this.title = title;
         authors = new ArrayList<>();
-        chapters = new ArrayList<>();
+        content = new ArrayList<>();
     }
 
     public void addAuthor(Author author) {
         authors.add(author);
     }
 
-    public int createChapter(String chapterTitle) {
-        Chapter chapter = new Chapter();
-        chapters.add(chapter);
-        return chapters.indexOf(chapter);
-    }
+//    public int createChapter(String chapterTitle) {
+//        Chapter chapter = new Chapter();
+//        chapters.add(chapter);
+//        return chapters.indexOf(chapter);
+//    }
+//
+//    public Chapter getChapter(int index) {
+//        return chapters.get(index);
+//    }
+public void addContent(BookComponent component) {
+    content.add(component);
+}
+    @Override
+    public void print() {
+        System.out.println("Book: " + title);
 
-    public Chapter getChapter(int index) {
-        return chapters.get(index);
+        System.out.println("Authors:");
+        for (Author author : authors) {
+            System.out.println("Author: " + author.getName());
+        }
+
+        for (BookComponent component : content) {
+            component.print();
+        }
     }
 }
+
