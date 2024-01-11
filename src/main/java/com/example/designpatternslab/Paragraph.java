@@ -1,6 +1,6 @@
 package com.example.designpatternslab;
 
-class Paragraph implements BookComponent, Alignable{
+class Paragraph implements BookComponent, Alignable, Visitee{
     private String text;
     private AlignStrategy alignStrategy;
 
@@ -23,5 +23,11 @@ class Paragraph implements BookComponent, Alignable{
         } else {
             System.out.println(alignStrategy.align(text));
         }
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visitParagraph(this);
+
     }
 }

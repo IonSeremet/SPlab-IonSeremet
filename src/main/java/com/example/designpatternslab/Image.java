@@ -2,7 +2,7 @@ package com.example.designpatternslab;
 
 import java.util.concurrent.TimeUnit;
 
-class Image implements BookComponent {
+class Image implements BookComponent, Visitee {
     private String imageUrl;
 
     public Image(String imageUrl) {
@@ -21,5 +21,11 @@ class Image implements BookComponent {
     @Override
     public void print() {
         System.out.println("Image with name: " + imageUrl);
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visitImage(this);
+
     }
 }

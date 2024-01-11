@@ -136,6 +136,13 @@ public class DesignPatternsLab2Application {
 // One can also request an instance from DI context by name
         c = (ClientComponent)context.getBean("clientComponent");
         c.operation();
+        RenderContentVisitor renderVisitor = new RenderContentVisitor();
+
+        // Use the visitor to render content
+        c.accept(renderVisitor);
+        // or
+        new RenderContentVisitor().visitBook(c);
+
     }
 
 

@@ -3,7 +3,7 @@ package com.example.designpatternslab;
 import java.util.ArrayList;
 import java.util.List;
 
-class SubChapter {
+class SubChapter implements Visitee {
     private String title;
     private List<Object> content;
 
@@ -44,5 +44,15 @@ class SubChapter {
                 System.out.println("Table with Title: " + ((Table) item).getText());
             }
         }
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visitSubChapter(this);
+
+    }
+
+    public String getTitle() {
+        return title;
     }
 }
