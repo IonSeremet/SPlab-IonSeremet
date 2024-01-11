@@ -2,7 +2,7 @@ package com.example.designpatternslab;
 import java.util.ArrayList;
 import java.util.List;
 
-class Book implements BookComponent {
+class Book implements BookComponent, Visitee {
     private String title;
     private List<Author> authors;
     private List<BookComponent> content;
@@ -41,6 +41,16 @@ public void addContent(BookComponent component) {
         for (BookComponent component : content) {
             component.print();
         }
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visitBook(this);
+
+    }
+
+    public String getTitle() {
+        return title;
     }
 }
 

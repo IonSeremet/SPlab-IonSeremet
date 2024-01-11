@@ -1,6 +1,6 @@
 package com.example.designpatternslab;
 
-public class Table {
+public class Table implements Visitee {
     private String title;
 
     public Table(String title) {
@@ -8,6 +8,16 @@ public class Table {
     }
 
     public String getText() {
+        return title;
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visitTable(this);
+
+    }
+
+    public String getTitle() {
         return title;
     }
 }
